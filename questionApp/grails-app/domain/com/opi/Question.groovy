@@ -1,7 +1,8 @@
 package com.opi
 
 class Question {
-	String question
+	String title
+	String text
 	String answer
 	String username
 
