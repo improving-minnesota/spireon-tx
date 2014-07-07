@@ -5,6 +5,8 @@ class Person {
 	String firstName
 	String lastName
 	String email
+	Date dateCreated
+	Date lastUpdated
 
 	static constraints = {
 		username nullable: false, blank: false, maxSize: 30
