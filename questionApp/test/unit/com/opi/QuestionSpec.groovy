@@ -18,15 +18,15 @@ class QuestionSpec extends Specification {
 	void "Question should validate"() {
 		when:
 
-		def p = Mock(User)
+		def u = Mock(User)
 
 		// Instead of mocking the person object, we could also create it
-//		Person p = new Person(userName: 'bobmarley', firstName: 'Bob',
+//		User u = new User(userName: 'bobmarley', firstName: 'Bob',
 //			lastName: 'Marley', email: 'bob@example.com')
 
 		def q = new Question(title: 'What is def?',
 			text: 'Please explain this thing called def.',
-			user: p)
+			user: u)
 
 		then:
 		q.validate()

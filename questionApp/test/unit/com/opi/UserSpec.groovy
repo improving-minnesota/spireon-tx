@@ -15,24 +15,24 @@ class UserSpec extends Specification {
 	def cleanup() {
 	}
 
-	def "test person validation"() {
-		User person = new User(userName: 'bobmarley', firstName: 'Bob',
+	def "test User validation"() {
+		User u = new User(userName: 'bobmarley', firstName: 'Bob',
 			lastName: 'Marley', email: 'bob@example.com')
 
-		assert person.validate()
+		assert u.validate()
 	}
 
     // Tests the custom validator.
-    void "test custom validator for no people with the name Justin Bieber"() {
-        User person = new User(userName:'justin', firstName: 'Justin',
+    void "test custom validator for no users with the name Justin Bieber"() {
+        User u = new User(userName:'justin', firstName: 'Justin',
             lastName: 'Bieber', email:'justin@example.com')
 
-        assert !person.validate()
+        assert !u.validate()
 
-        person.firstName = 'jUsTiN'         // case insensitive
-        assert !person.validate()
+        u.firstName = 'jUsTiN'         // case insensitive
+        assert !u.validate()
 
-        person.lastName = 'TV'
-        assert person.validate()
+        u.lastName = 'TV'
+        assert u.validate()
     }
 }
