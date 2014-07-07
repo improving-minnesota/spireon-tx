@@ -9,12 +9,20 @@ import spock.lang.Specification
 @TestFor(Question)
 class QuestionSpec extends Specification {
 
-    def setup() {
-    }
+	def setup() {
+	}
 
-    def cleanup() {
-    }
+	def cleanup() {
+	}
 
-    void "test something"() {
-    }
+	void "Question should validate"() {
+		when:
+		def p = Mock(Person)
+		def q = new Question(title: 'What is def?',
+			text: 'Please explain this thing called def.',
+			author: p)
+
+		then:
+		q.validate()
+	}
 }

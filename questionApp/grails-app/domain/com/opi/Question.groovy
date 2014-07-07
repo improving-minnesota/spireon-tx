@@ -1,11 +1,22 @@
 package com.opi
 
 class Question {
+
+	Person author
 	String title
 	String text
-	String answer
-	String username
+	Date dateCreated
+	Date lastUpdated
+
+	static hasMany = [answers: Answer]
 
 	static constraints = {
+		title nullable: false, blank: false, maxSize: 200,
+			validator: { val, obj ->
+				if (val.contains('JVM')) {
+					return "jvm.questions.not.allowed"
+				}
+			}
+		text nullable: false, blank: false, maxSize: 10000
 	}
 }
