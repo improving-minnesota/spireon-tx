@@ -4,7 +4,7 @@ class Answer {
 	String text
 	Date dateCreated
 	Date lastUpdated
-	Person author
+	User author
 
 	static belongsTo = [question: Question]
 

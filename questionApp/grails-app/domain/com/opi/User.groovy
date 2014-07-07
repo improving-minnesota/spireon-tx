@@ -1,6 +1,6 @@
 package com.opi
 
-class Person {
+class User {
 	String username
 	String firstName
 	String lastName

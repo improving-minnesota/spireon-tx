@@ -2,7 +2,7 @@ package com.opi
 
 class Question {
 
-	Person author
+	User user
 	String title
 	String text
 	Date dateCreated

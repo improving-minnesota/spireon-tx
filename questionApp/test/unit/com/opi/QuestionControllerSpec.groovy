@@ -12,7 +12,7 @@ class QuestionControllerSpec extends Specification {
     def populateValidParams(params) {
         assert params != null
         // TODO: Populate valid properties like...
-        params["author"] = Mock(Person)
+        params["user"] = Mock(User)
 		params["title"] = "Test Question"
 		params["text"] = "Creating my first controller test"
 

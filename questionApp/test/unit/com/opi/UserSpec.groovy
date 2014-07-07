@@ -6,8 +6,8 @@ import spock.lang.Specification
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(Person)
-class PersonSpec extends Specification {
+@TestFor(User)
+class UserSpec extends Specification {
 
 	def setup() {
 	}
@@ -16,7 +16,7 @@ class PersonSpec extends Specification {
 	}
 
 	def "test person validation"() {
-		Person person = new Person(userName: 'bobmarley', firstName: 'Bob',
+		User person = new User(userName: 'bobmarley', firstName: 'Bob',
 			lastName: 'Marley', email: 'bob@example.com')
 
 		assert person.validate()
@@ -24,7 +24,7 @@ class PersonSpec extends Specification {
 
     // Tests the custom validator.
     void "test custom validator for no people with the name Justin Bieber"() {
-        Person person = new Person(userName:'justin', firstName: 'Justin',
+        User person = new User(userName:'justin', firstName: 'Justin',
             lastName: 'Bieber', email:'justin@example.com')
 
         assert !person.validate()
