@@ -1,10 +1,13 @@
 package com.opi
 
+import org.hibernate.FetchMode
+
 class Question {
 
 	User user
 	String title
 	String text
+	boolean deleted = false
 	Date dateCreated
 	Date lastUpdated
 
@@ -18,5 +21,23 @@ class Question {
 				}
 			}
 		text nullable: false, blank: false, maxSize: 10000
+	}
+
+	static namedQueries = {
+		querySinceLastLogin { lastLogin ->
+			fetchMode "answers",
+				FetchMode.SELECT
+			eq("deleted", false)
+			gt("lastUpdated", lastLogin)
+		}
+	}
+
+	static mapping = {
+		table 'topics'
+
+		answers joinTable: [name  : 'topic_responses_audited',
+							key   : 'question_id',
+							column: 'answer_id'
+		]
 	}
 }
