@@ -7,7 +7,7 @@ class BootStrap {
 	def sessionFactory
 	def propertyInstanceMap = org.codehaus.groovy.grails.plugins.DomainClassGrailsPlugin.PROPERTY_INSTANCE_MAP
 
-	def init = { servletContext ->
+	def init = {/* servletContext ->
 		User bob = new User(firstName: "Bob", lastName: "Marley", username: "bobmarley", email: "bob@objectpartners.com").save(failOnError: true)
 		User peter = new User(firstName: "Peter", lastName: "Tosh", username: "petertosh", email: "peter@objectpartners.com").save(failOnError: true)
 
@@ -45,7 +45,7 @@ class BootStrap {
 
 		// Simple example with composite primary key
 		//        User user = User.get(new User(email: 'bob@objectpartners.com', userName: 'bobmarley'))
-		//        println user
+		//        println user*/
 
 	}
 	def destroy = {
