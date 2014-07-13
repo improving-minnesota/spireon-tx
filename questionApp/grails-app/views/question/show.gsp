@@ -23,29 +23,67 @@
 			</g:if>
 			<ol class="property-list question">
 			
-				<g:if test="${questionInstance?.answer}">
+				<g:if test="${questionInstance?.title}">
 				<li class="fieldcontain">
-					<span id="answer-label" class="property-label"><g:message code="question.answer.label" default="Answer" /></span>
+					<span id="title-label" class="property-label"><g:message code="question.title.label" default="Title" /></span>
 					
-						<span class="property-value" aria-labelledby="answer-label"><g:fieldValue bean="${questionInstance}" field="answer"/></span>
+						<span class="property-value" aria-labelledby="title-label"><g:fieldValue bean="${questionInstance}" field="title"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${questionInstance?.question}">
+				<g:if test="${questionInstance?.text}">
 				<li class="fieldcontain">
-					<span id="question-label" class="property-label"><g:message code="question.question.label" default="Question" /></span>
+					<span id="text-label" class="property-label"><g:message code="question.text.label" default="Text" /></span>
 					
-						<span class="property-value" aria-labelledby="question-label"><g:fieldValue bean="${questionInstance}" field="question"/></span>
+						<span class="property-value" aria-labelledby="text-label"><g:fieldValue bean="${questionInstance}" field="text"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${questionInstance?.username}">
+				<g:if test="${questionInstance?.answers}">
 				<li class="fieldcontain">
-					<span id="username-label" class="property-label"><g:message code="question.username.label" default="Username" /></span>
+					<span id="answers-label" class="property-label"><g:message code="question.answers.label" default="Answers" /></span>
 					
-						<span class="property-value" aria-labelledby="username-label"><g:fieldValue bean="${questionInstance}" field="username"/></span>
+						<g:each in="${questionInstance.answers}" var="a">
+						<span class="property-value" aria-labelledby="answers-label"><g:link controller="answer" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${questionInstance?.dateCreated}">
+				<li class="fieldcontain">
+					<span id="dateCreated-label" class="property-label"><g:message code="question.dateCreated.label" default="Date Created" /></span>
+					
+						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${questionInstance?.dateCreated}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${questionInstance?.deleted}">
+				<li class="fieldcontain">
+					<span id="deleted-label" class="property-label"><g:message code="question.deleted.label" default="Deleted" /></span>
+					
+						<span class="property-value" aria-labelledby="deleted-label"><g:formatBoolean boolean="${questionInstance?.deleted}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${questionInstance?.lastUpdated}">
+				<li class="fieldcontain">
+					<span id="lastUpdated-label" class="property-label"><g:message code="question.lastUpdated.label" default="Last Updated" /></span>
+					
+						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate date="${questionInstance?.lastUpdated}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${questionInstance?.user}">
+				<li class="fieldcontain">
+					<span id="user-label" class="property-label"><g:message code="question.user.label" default="User" /></span>
+					
+						<span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show" id="${questionInstance?.user?.id}">${questionInstance?.user?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

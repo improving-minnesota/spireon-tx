@@ -5,7 +5,7 @@ class Answer {
 	Date dateCreated
 	Date lastUpdated
 	User author
-	boolean accepted
+	boolean accepted=false
 
 	static belongsTo = [question: Question]
 
