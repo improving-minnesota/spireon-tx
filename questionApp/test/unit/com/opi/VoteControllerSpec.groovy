@@ -9,12 +9,17 @@ import spock.lang.Specification
 @TestFor(VoteController)
 class VoteControllerSpec extends Specification {
 
-    def setup() {
-    }
+	void "vodUpQuestion is redirected to Question.show"() {
+		given:
+		def question = Mock(Question)
+		controller.params.id = '42'
 
-    def cleanup() {
-    }
+		when:
+		controller.voteUpQuestion()
 
-    void "test something"() {
-    }
+		then:
+		response.redirectedUrl == '/question/show/42'
+
+
+	}
 }

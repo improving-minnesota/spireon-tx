@@ -27,8 +27,9 @@ class QuestionSpec extends Specification {
 		def q = new Question(title: 'What is def?',
 			text: 'Please explain this thing called def.',
 			user: u)
+		q.validate()
 
 		then:
-		q.validate()
+		q.hasErrors() == false
 	}
 }

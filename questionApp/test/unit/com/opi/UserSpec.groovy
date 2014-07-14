@@ -1,7 +1,9 @@
 package com.opi
 
+import com.opi.User
 import grails.test.mixin.TestFor
 import spock.lang.Specification
+import spock.lang.Unroll
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
@@ -9,30 +11,42 @@ import spock.lang.Specification
 @TestFor(User)
 class UserSpec extends Specification {
 
-	def setup() {
-	}
-
-	def cleanup() {
-	}
-
 	def "test User validation"() {
-		User u = new User(userName: 'bobmarley', firstName: 'Bob',
-			lastName: 'Marley', email: 'bob@example.com')
+		given:
+		mockForConstraintsTests(User)
 
-		assert u.validate()
+		when:
+		User u = new User(username: username, firstName: firstName, lastName: lastName, email: email)
+		u.validate()
+
+		then:
+		u.hasErrors() == !valid
+
+		where:
+		username	| firstName		| lastName		| email					| valid
+		"bobmarley"	| "Bob"			| "Marley"		| "bobmarley@opi.com"	| true
 	}
 
-    // Tests the custom validator.
-    void "test custom validator for no users with the name Justin Bieber"() {
-        User u = new User(userName:'justin', firstName: 'Justin',
-            lastName: 'Bieber', email:'justin@example.com')
+//	// Tests the custom validator.
+	@Unroll
+	void "User  #username, #firstName, #lastName passes custom validation #valid"() {
+		given:
+		mockForConstraintsTests(User)
 
-        assert !u.validate()
+		when:
+		User u = new User(username: username, firstName: firstName, lastName: lastName, email: email)
+		u.validate()
 
-        u.firstName = 'jUsTiN'         // case insensitive
-        assert !u.validate()
+		then:
+		u.hasErrors() == !valid
 
-        u.lastName = 'TV'
-        assert u.validate()
-    }
+		where:
+		username	| firstName		| lastName		| email					| valid
+		"theBiebs"	| "Justin"		| "Bieber"		| "justin@example.com"	| false
+		"theBiebs"	| "JUsTin"		| "Bieber"		| "justin@example.com"	| false
+		"theBiebs"	| "JUsTin"		| "BIeBeR"		| "justin@example.com"	| false
+		"theBiebs"	| "Ryan"		| "Bieber"		| "justin@example.com"	| true
+
+	}
+
 }
