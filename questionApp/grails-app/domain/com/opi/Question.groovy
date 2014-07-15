@@ -11,7 +11,7 @@ class Question {
 	Date dateCreated
 	Date lastUpdated
 
-	static hasMany = [answers: Answer]
+	static hasMany = [answers: Answer, votes: Vote]
 
 	static constraints = {
 		title nullable: false, blank: false, maxSize: 200,

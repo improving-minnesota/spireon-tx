@@ -8,6 +8,7 @@ class Answer {
 	boolean accepted=false
 
 	static belongsTo = [question: Question]
+	static hasMany = [votes: Vote]
 
 	static constraints = {
 		text nullable: false, blank: false, maxSize: 10000
