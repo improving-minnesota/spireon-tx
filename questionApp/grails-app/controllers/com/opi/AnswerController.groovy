@@ -30,7 +30,7 @@ class AnswerController {
 				flash.message = "There was an issue adding your answer. Please try again"
 				redirect(controller: 'question', action: 'show', id: cmd.id)
 			} else {
-				flash.message = "The Question was not found"
+				flash.message = "Question Not Found"
 				redirect(controller: 'question', action: 'list')
 			}
 		}

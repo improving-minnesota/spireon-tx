@@ -14,7 +14,9 @@
 		<div class="well well-lg">
 			<g:each in="${questionInstanceList}" var="question">
 				<h3><g:link controller="question" action="show" id="${question.id}">${question.title}</g:link></h3>
+				<div> <question:summary question="${question}" /> </div>
 			</g:each>
+
 		</div>
 	</div>
 </body>
