@@ -45,12 +45,12 @@
 
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			<g:if test="${flash.error}">
-				<div class="alert alert-error">${flash.error}</div>
+			<g:if test="${flash.message}">
+				<div class="alert alert-error">${flash.message}</div>
 			</g:if>
 
-			<g:hasErrors bean=" ${answer}">
-				<g:renderErrors bean=" ${answer}" as="list" />
+			<g:hasErrors bean="${answer}">
+				<g:renderErrors bean="${answer}" as="list" />
 			</g:hasErrors>
 
 			<g:form class="form" controller="answer" action="answer" id="${questionInstance.id}">
@@ -61,9 +61,9 @@
 				<div class="form-group">
 					<g:textArea name="answer" rows="10" cols="80" />
 				</div>
-				<br/>
+
 				<div class="form-group">
-				<g:submitButton class="btn" name="postAnswer" value="Post Answer" />
+					<g:submitButton class="btn" name="postAnswer" value="Post Answer" />
 				</div>
 			</g:form>
 		</div>
