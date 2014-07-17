@@ -40,4 +40,9 @@ class Question {
 							column: 'answer_id'
 		]
 	}
+
+	Integer getVoteCount() {
+     votes*.vote.sum()?:0
+ }
+
 }

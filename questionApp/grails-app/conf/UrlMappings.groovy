@@ -7,9 +7,7 @@ class UrlMappings {
 			}
 		}
 
-		"/showQuestions" (controller: "question", action: "index")
-
-		"/"(view: "/index")
+		name home: "/"(controller: "question", action: "index")
 		"500"(view: '/error')
 	}
 }

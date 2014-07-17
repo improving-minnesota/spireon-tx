@@ -1,100 +1,73 @@
-
-<%@ page import="com.opi.Question" %>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'question.label', default: 'Question')}" />
-		<title><g:message code="default.show.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<a href="#show-question" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
+<head>
+	<meta content="main" name="layout">
+	<title>Question</title>
+</head>
+
+<body>
+	<bo:row>
+		<div class="col-md-1">
+			<div class="row">
+				<g:link controller="vote" action="voteUpQuestion" id="${questionInstance.id}">
+					<span class="glyphicon glyphicon-plus"></span>
+				</g:link>
+			</div>
+			<h2>${questionInstance.voteCount}</h2>
+
+			<div class="row">
+				<g:link controller="vote" action="voteDownQuestion" id="${questionInstance.id}">
+					<span class="glyphicon glyphicon-minus"></span>
+				</g:link>
+			</div>
 		</div>
-		<div id="show-question" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+
+		<div class="col-md-10">
+			<div class="row">
+				<div class="col-md-9">
+					<h2>${questionInstance.title}</h2>
+				</div>
+
+			</div>
+
+			<p>${questionInstance.text}</p>
+
+			<div class="row">
+				<div class="offset8">
+					<bo:signature user="${questionInstance.user}" />
+				</div>
+			</div>
+
+			<g:render template="answered" collection="${answers}" var="answer" />
+
+		</div>
+	</bo:row>
+
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<g:if test="${flash.error}">
+				<div class="alert alert-error">${flash.error}</div>
 			</g:if>
-			<ol class="property-list question">
-			
-				<g:if test="${questionInstance?.title}">
-				<li class="fieldcontain">
-					<span id="title-label" class="property-label"><g:message code="question.title.label" default="Title" /></span>
-					
-						<span class="property-value" aria-labelledby="title-label"><g:fieldValue bean="${questionInstance}" field="title"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${questionInstance?.text}">
-				<li class="fieldcontain">
-					<span id="text-label" class="property-label"><g:message code="question.text.label" default="Text" /></span>
-					
-						<span class="property-value" aria-labelledby="text-label"><g:fieldValue bean="${questionInstance}" field="text"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${questionInstance?.answers}">
-				<li class="fieldcontain">
-					<span id="answers-label" class="property-label"><g:message code="question.answers.label" default="Answers" /></span>
-					
-						<g:each in="${questionInstance.answers}" var="a">
-						<span class="property-value" aria-labelledby="answers-label"><g:link controller="answer" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${questionInstance?.dateCreated}">
-				<li class="fieldcontain">
-					<span id="dateCreated-label" class="property-label"><g:message code="question.dateCreated.label" default="Date Created" /></span>
-					
-						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${questionInstance?.dateCreated}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${questionInstance?.deleted}">
-				<li class="fieldcontain">
-					<span id="deleted-label" class="property-label"><g:message code="question.deleted.label" default="Deleted" /></span>
-					
-						<span class="property-value" aria-labelledby="deleted-label"><g:formatBoolean boolean="${questionInstance?.deleted}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${questionInstance?.lastUpdated}">
-				<li class="fieldcontain">
-					<span id="lastUpdated-label" class="property-label"><g:message code="question.lastUpdated.label" default="Last Updated" /></span>
-					
-						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate date="${questionInstance?.lastUpdated}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${questionInstance?.user}">
-				<li class="fieldcontain">
-					<span id="user-label" class="property-label"><g:message code="question.user.label" default="User" /></span>
-					
-						<span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show" id="${questionInstance?.user?.id}">${questionInstance?.user?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-			</ol>
-			<g:form url="[resource:questionInstance, action:'delete']" method="DELETE">
-				<fieldset class="buttons">
-					<g:link class="edit" action="edit" resource="${questionInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
+
+			<g:hasErrors bean=" ${answer}">
+				<g:renderErrors bean=" ${answer}" as="list" />
+			</g:hasErrors>
+
+			<g:form class="form" controller="answer" action="answer" id="${questionInstance.id}">
+				<div class="form-group">
+					<label for="answer">Your Answer</label>
+				</div>
+
+				<div class="form-group">
+					<g:textArea name="answer" rows="10" cols="80" />
+				</div>
+				<br/>
+				<div class="form-group">
+				<g:submitButton class="btn" name="postAnswer" value="Post Answer" />
+				</div>
 			</g:form>
 		</div>
-	</body>
+	</div>
+
+</body>
 </html>
