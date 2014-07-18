@@ -85,6 +85,16 @@ grails.hibernate.pass.readonly = false
 // configure passing read-only to OSIV session by default, requires "singleSession = false" OSIV mode
 grails.hibernate.osiv.readonly = false
 
+grails.cache.enabled = true
+grails.cache.config = {
+	cache {
+		name 'question'
+	}
+	cache {
+		name 'answer'
+	}
+}
+
 environments {
 	development {
 		grails.logging.jul.usebridge = true

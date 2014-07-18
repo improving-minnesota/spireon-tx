@@ -2,7 +2,9 @@ package com.opi
 
 import org.hibernate.FetchMode
 
-class Question {
+class Question implements Serializable {
+	private static final long serialVersionUID = 1
+
 
 	User user
 	String title

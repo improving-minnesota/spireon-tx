@@ -5,6 +5,7 @@ import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class QuestionController {
+	def questionService
 
 	static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -13,12 +14,9 @@ class QuestionController {
 		respond Question.list(params), model: [questionInstanceCount: Question.count()]
 	}
 
-	def searchByUsername() {
-		def questionInstanceList = Question.findAllByUsername('doug')
-		respond questionInstanceList, model: [questionInstanceCount: Question.count()], view: 'index'
-	}
+	def show(String id) {
+		def questionInstance = questionService.getQuestion(id)
 
-	def show(Question questionInstance) {
 		def answers = questionInstance.answers.sort { a,b -> b.voteCount <=> a.voteCount }
 
 		respond questionInstance, model: [answers: answers]
