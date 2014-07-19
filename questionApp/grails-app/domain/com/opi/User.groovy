@@ -3,7 +3,9 @@ package com.opi
 //	Uncomment for composite primary key.
 //import org.apache.commons.lang.builder.HashCodeBuilder
 //class User implements Serializable {
+import grails.rest.*
 
+@Resource(uri='/users')
 class User {
 	String username
 	String firstName
