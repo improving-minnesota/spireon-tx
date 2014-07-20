@@ -67,6 +67,14 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.4.0"
         runtime ":jquery:1.11.1"
 
+        // plugins needed for security
+        compile ":spring-security-core:2.0-RC4"
+        //compile ":spring-security-ui:1.0-RC2"
+        //compile ":spring-security-appinfo:2.0-RC2"
+        //compile ":spring-security-twitter:0.6.2"
+        //compile ":spring-security-facebook:0.15.3-CORE2"
+        //compile ":spring-security-openid:2.0-RC2" // google auth, etc...
+
         // Uncomment these to enable additional asset-pipeline capabilities
         //compile ":sass-asset-pipeline:1.7.4"
         //compile ":less-asset-pipeline:1.7.0"
