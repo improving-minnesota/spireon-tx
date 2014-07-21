@@ -67,13 +67,16 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.4.0"
         runtime ":jquery:1.11.1"
 
-        // plugins needed for security
+        // Spring Security Core
         compile ":spring-security-core:2.0-RC4"
+
+        // Spring Security UI
         compile ":spring-security-ui:1.0-RC2"
         compile ":mail:1.0.6"
         compile ":famfamfam:1.0.1"
         runtime ":jquery:1.11.1"
         compile ":jquery-ui:1.10.3"
+        compile ":greenmail:1.3.4"
 
         //compile ":spring-security-appinfo:2.0-RC2"
         //compile ":spring-security-twitter:0.6.2"

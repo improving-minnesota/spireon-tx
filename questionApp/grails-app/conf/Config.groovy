@@ -88,8 +88,10 @@ grails.hibernate.osiv.readonly = false
 environments {
     development {
         grails.logging.jul.usebridge = true
+        grails.mail.port = com.icegreen.greenmail.util.ServerSetupTest.SMTP.port
     }
     production {
+        greenmail.disabled=true
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
     }
@@ -124,8 +126,8 @@ grails.plugin.springsecurity.authority.className = 'com.opi.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/':                              ['permitAll'],
 	'/register':                      ['permitAll'],
-	'/register/index':                ['permitAll'],
-	'/register/newRegister':          ['permitAll'],
+	'/greenmail/**':                  ['permitAll'],
+	'/register/**':                   ['permitAll'],
 	'/index':                         ['permitAll'],
 	'/index.gsp':                     ['permitAll'],
 	'/assets/**':                     ['permitAll'],
