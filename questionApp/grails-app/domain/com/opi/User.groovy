@@ -6,18 +6,18 @@ class User {
 
 	String username
 
-	String firstName
-	String lastName
+	String firstName = 'Unknown'
+	String lastName = 'Unknown'
 	String email
 
 	String password
 	boolean enabled = true
-	boolean accountExpired
-	boolean accountLocked
-	boolean passwordExpired
+	boolean accountExpired = false
+	boolean accountLocked = false
+	boolean passwordExpired = false
 
-	Date dateCreated
-	Date lastUpdated
+	Date dateCreated = new Date()
+	Date lastUpdated = new Date()
 
 	static transients = ['springSecurityService']
 

@@ -123,6 +123,9 @@ grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.opi.UserRo
 grails.plugin.springsecurity.authority.className = 'com.opi.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/':                              ['permitAll'],
+	'/register':                      ['permitAll'],
+	'/register/index':                ['permitAll'],
+	'/register/newRegister':          ['permitAll'],
 	'/index':                         ['permitAll'],
 	'/index.gsp':                     ['permitAll'],
 	'/assets/**':                     ['permitAll'],
