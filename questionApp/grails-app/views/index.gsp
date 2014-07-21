@@ -104,11 +104,18 @@
 		</div>
 		<div id="page-body" role="main">
             <h1>Welcome to Grails <sec:username/></h1>
+            <sec:ifNotLoggedIn>
+                <g:link controller='login' action='auth'>Login</g:link>
+            </sec:ifNotLoggedIn>
+
+
 			<p>Congratulations, you have successfully started your first Grails application! At the moment
 			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
 			   content you may choose. Below is a list of controllers that are currently deployed in this application,
 			   click on each to execute its default action:</p>
 
+            <sec:ifAnyGranted roles="ROLE_ADMIN">
+            Only 'Admins' have access to the controller list.
 			<div id="controller-list" role="navigation">
 				<h2>Available Controllers:</h2>
 				<ul>
@@ -117,6 +124,7 @@
 					</g:each>
 				</ul>
 			</div>
+            </sec:ifAnyGranted>
 		</div>
 	</body>
 </html>
