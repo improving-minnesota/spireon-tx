@@ -8,6 +8,7 @@ class UrlMappings {
 		}
 
 		"/showQuestions" (controller: "question", action: "index")
+		"/register/index" (controller: "register", action: "registerForm")
 
 		"/"(view: "/index")
 		"500"(view: '/error')

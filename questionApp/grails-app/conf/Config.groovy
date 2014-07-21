@@ -136,4 +136,5 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/images/**':                  ['permitAll'],
 	'/**/favicon.ico':                ['permitAll']
 ]
+grails.plugin.springsecurity.ui.register.defaultRoleNames = ['ROLE_USER']
 

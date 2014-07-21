@@ -8,11 +8,16 @@ import grails.plugin.springsecurity.ui.RegistrationCode
 
 class RegisterController extends UiRegister {
 
+	def registerForm() {
+		Map copy = [:] + (flash.chainedParams ?: [:])
+		copy.remove 'controller'
+		copy.remove 'action'
+        render view: 'index', model: [command: new RegisterCommand(copy)]
+	}
+
 	def newRegister(RegisterCommand command) {
 
-        println "Validating command..."
 		if (command.hasErrors()) {
-            println command.errors
 			render view: 'index', model: [command: command]
 			return
 		}
@@ -26,11 +31,6 @@ class RegisterController extends UiRegister {
 				accountLocked: true,
 				enabled: true
 		)
-
-        println "Validating domain..."
-        if (!user.validate()) {
-            println user.errors
-        }
 
 		RegistrationCode registrationCode = springSecurityUiService.register(user, command.password, salt)
 		if (registrationCode == null || registrationCode.hasErrors()) {
