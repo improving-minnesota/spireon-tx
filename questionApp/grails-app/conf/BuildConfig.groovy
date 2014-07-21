@@ -69,7 +69,12 @@ grails.project.dependency.resolution = {
 
         // plugins needed for security
         compile ":spring-security-core:2.0-RC4"
-        //compile ":spring-security-ui:1.0-RC2"
+        compile ":spring-security-ui:1.0-RC2"
+        compile ":mail:1.0.6"
+        compile ":famfamfam:1.0.1"
+        runtime ":jquery:1.11.1"
+        compile ":jquery-ui:1.10.3"
+
         //compile ":spring-security-appinfo:2.0-RC2"
         //compile ":spring-security-twitter:0.6.2"
         //compile ":spring-security-facebook:0.15.3-CORE2"
