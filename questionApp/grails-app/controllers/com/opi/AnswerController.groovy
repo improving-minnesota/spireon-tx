@@ -11,7 +11,15 @@ class AnswerController {
 	static allowedMethods = [comment: 'POST']
 
 	def answer(AnswerCommand cmd) {
-		if (cmd.validate()) {
+		if (cmd.hasErrors()) {
+			if (cmd.id) {
+				flash.message = "There was an issue adding your answer. Please try again"
+				redirect(controller: 'question', action: 'show', id: cmd.id.id)
+			} else {
+				flash.message = "The Question was not found"
+				redirect(controller: 'question', action: 'index')
+			}
+		} else {
 			def question = cmd.id
 			User user = User.get(1)
 
@@ -25,14 +33,6 @@ class AnswerController {
 				flash.message = "There was an issue adding your answer. Please try again"
 			}
 			redirect controller: "question", action: "show", id: question.id
-		} else {
-			if (cmd.id) {
-				flash.message = "There was an issue adding your answer. Please try again"
-				redirect(controller: 'question', action: 'show', id: cmd.id)
-			} else {
-				flash.message = "The Question was not found"
-				redirect(controller: 'question', action: 'list')
-			}
 		}
 	}
 
