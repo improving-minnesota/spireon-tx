@@ -14,11 +14,8 @@ class QuestionController {
 		respond Question.list(params), model: [questionInstanceCount: Question.count()]
 	}
 
-	def show(String id) {
-		def questionInstance = questionService.getQuestion(id)
-
-		def answers = questionInstance.answers.sort { a,b -> b.voteCount <=> a.voteCount }
-
+	def show(Question questionInstance) {
+		def answers = questionInstance?.answers?.sort { a,b -> b.voteCount <=> a.voteCount }
 		respond questionInstance, model: [answers: answers]
 	}
 

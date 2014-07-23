@@ -1,7 +1,6 @@
 package com.opi
 
 import grails.transaction.Transactional
-import java.lang.IllegalArgumentException
 
 @Transactional
 class VotingService {
