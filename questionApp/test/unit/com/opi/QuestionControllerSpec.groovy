@@ -9,7 +9,7 @@ class QuestionControllerSpec extends Specification {
 
 	def populateValidParams(params) {
 		assert params != null
-		params["user"] = Mock(User)
+		params["user"] = new User(firstName: 'some', lastName: 'guy', username: 'someguy', email: 'some@guy.com')
 		params["title"] = "Test Question"
 		params["text"] = "Creating my first controller test"
 
