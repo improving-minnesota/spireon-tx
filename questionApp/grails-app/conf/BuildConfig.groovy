@@ -64,6 +64,7 @@ grails.project.dependency.resolution = {
 		compile ":asset-pipeline:1.9.3"
 
 		compile ":twitter-bootstrap:3.2.1"
+        compile ":event-log:0.1"
 
 		// plugins needed at runtime but not for compilation
 		runtime ":hibernate4:4.3.5.4" // or ":hibernate:3.6.10.16"
