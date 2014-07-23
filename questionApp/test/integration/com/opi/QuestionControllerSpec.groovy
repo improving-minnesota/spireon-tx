@@ -23,7 +23,7 @@ class QuestionControllerSpec extends Specification {
 		controller.params.id = '1'
 
 		when:
-		controller.show()x
+		controller.show()
 
 		then:
 		controller.response.status == 200
