@@ -9,7 +9,7 @@ class QuestionControllerSpec extends Specification {
 
 	def populateValidParams(params) {
 		assert params != null
-		params["user"] = Mock(User)
+		params["user"] = new User(firstName: 'some', lastName: 'guy', username: 'someguy', email: 'some@guy.com')
 		params["title"] = "Test Question"
 		params["text"] = "Creating my first controller test"
 
@@ -110,7 +110,7 @@ class QuestionControllerSpec extends Specification {
 		controller.update(null)
 
 		then: "A 404 error is returned"
-		response.redirectedUrl == '/showQuestions'
+		response.redirectedUrl == '/'
 		flash.message != null
 
 
@@ -142,7 +142,7 @@ class QuestionControllerSpec extends Specification {
 		controller.delete(null)
 
 		then: "A 404 is returned"
-		response.redirectedUrl == '/showQuestions'
+		response.redirectedUrl == '/'
 		flash.message != null
 
 		when: "A domain instance is created"
@@ -158,7 +158,7 @@ class QuestionControllerSpec extends Specification {
 
 		then: "The instance is deleted"
 		Question.count() == 0
-		response.redirectedUrl == '/showQuestions'
+		response.redirectedUrl == '/'
 		flash.message != null
 	}
 }
