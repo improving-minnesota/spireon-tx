@@ -2,18 +2,17 @@ class EventLogGrailsPlugin {
     // the plugin version
     def version = "0.1"
     // the version or versions of Grails the plugin is designed for
-    def grailsVersion = "2.4 > *"
+    def grailsVersion = "2.0 > *"
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
         "grails-app/views/error.gsp"
     ]
 
-    // TODO Fill in these fields
     def title = "Event Log Plugin" // Headline display name of the plugin
-    def author = "Your name"
-    def authorEmail = ""
+    def author = "James Ranstrom"
+    def authorEmail = "james.ranstrom@objectpartners.com"
     def description = '''\
-Brief summary/description of the plugin.
+A sample plugin to demonstrate the basics of writing plugins.
 '''
 
     // URL to the plugin's documentation
@@ -22,7 +21,7 @@ Brief summary/description of the plugin.
     // Extra (optional) plugin metadata
 
     // License: one of 'APACHE', 'GPL2', 'GPL3'
-//    def license = "APACHE"
+    def license = "APACHE"
 
     // Details of company behind the plugin (if there is one)
 //    def organization = [ name: "My Company", url: "http://www.my-company.com/" ]
