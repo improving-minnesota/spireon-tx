@@ -86,7 +86,7 @@
                             <p class="form-control-static">${sitePhone}</p>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
 	</body>
