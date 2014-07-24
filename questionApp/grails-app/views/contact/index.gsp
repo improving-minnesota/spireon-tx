@@ -77,13 +77,13 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Email us at</label>
                         <div class="col-sm-10">
-                            <p class="form-control-static">${params.siteEmail}</p>
+                            <p class="form-control-static">${siteEmail}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Call us at</label>
                         <div class="col-sm-10">
-                            <p class="form-control-static">${params.sitePhone}</p>
+                            <p class="form-control-static">${sitePhone}</p>
                         </div>
                     </div>
                 </form>
