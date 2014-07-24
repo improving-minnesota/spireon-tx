@@ -49,7 +49,7 @@
 				<ul class="nav navbar-nav">
 					<bo:header action="${['list', '']}"><g:link mapping="home">Home</g:link></bo:header>
 					<bo:header action="${['create']}"><g:link controller="question" action="create">Ask Questions</g:link></bo:header>
-					<li><a href="#about">About</a></li>
+					<li><g:link uri="/about">About</g:link></li>
 					<li><g:link uri="/contact">Contact</g:link></li>
 				</ul>
 
