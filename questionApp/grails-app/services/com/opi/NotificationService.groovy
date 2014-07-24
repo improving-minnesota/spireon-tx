@@ -10,6 +10,6 @@ class NotificationService {
 
         //just return true for now
         //change to false to 'simulate' a failed send
-        true
+        false
     }
 }

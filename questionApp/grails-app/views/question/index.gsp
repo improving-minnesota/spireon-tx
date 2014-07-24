@@ -7,12 +7,9 @@
 
 <body>
 
-    <%-- Uncomment the below section for the 'flash' message lab --%>
-    <%--
     <g:if test="${flash.message}">
         <div class="alert alert-warning" role="alert">${flash.message}</div>
     </g:if>
-    --%>
 
 <div class="page-header">
 		<h2>Recent questions</h2>
