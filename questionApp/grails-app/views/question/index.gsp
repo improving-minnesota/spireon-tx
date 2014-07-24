@@ -21,8 +21,10 @@
 	<div class="fourteen columns offset-by-one">
 		<div class="well well-lg">
 
-
-				<h3><g:link controller="question" action="show" id="${questionInstanceList[0].id}">${questionInstanceList[0].title}</g:link></h3>
+            <g:each var="question" in="${questionInstanceList}">
+				<h3><g:link controller="question" action="show" id="${question.id}">${question.title}</g:link></h3>
+                Votes: ${question.voteCount} | User: ${question.user.username}
+            </g:each>
 
 
 		</div>

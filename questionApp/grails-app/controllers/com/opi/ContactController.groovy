@@ -11,4 +11,9 @@ class ContactController {
     def data() {
         render ([msg: 'hi', questionCount: Question.count()] as JSON)
     }
+
+    def save(String fullName, String email, String phone, String note) {
+        log.debug "Saving $fullName, $email, $phone, $note"
+        redirect uri:'/'
+    }
 }
