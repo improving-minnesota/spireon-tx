@@ -50,7 +50,7 @@
 					<bo:header action="${['list', '']}"><g:link mapping="home">Home</g:link></bo:header>
 					<bo:header action="${['create']}"><g:link controller="question" action="create">Ask Questions</g:link></bo:header>
 					<li><a href="#about">About</a></li>
-					<li><a href="#contact">Contact</a></li>
+					<li><g:link uri="/contact">Contact</g:link></li>
 				</ul>
 
 				<form class="navbar-form navbar-left" role="search">
