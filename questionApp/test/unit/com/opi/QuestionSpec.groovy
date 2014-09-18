@@ -7,7 +7,6 @@ import grails.buildtestdata.mixin.Build
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@Build(Question)
 @TestFor(Question)
 class QuestionSpec extends Specification {
 
@@ -34,29 +33,4 @@ class QuestionSpec extends Specification {
 		q.validate()
 	}
 
-	void "test User creation"() {
-		when:
-		def user = User.build()
-
-		then:
-		user.validate()
-	}
-
-	void "test User constraints"() {
-		when:
-		def user = User.build()
-		user.username = username
-		user.firstName = firstName
-		user.lastName = lastName
-		user.email = email
-
-		then:
-		user.validate() == isValid
-
-		where:
-		username    | firstName | lastName  | email                 | isValid
-		"sabersd"   | "Doug"    | "Sabers"  | "sabersd@email.com"   | true
-		"sabersd"   | "Justin"  | "Bieber"  | "sabersd@email.com"   | false
-		"sabersd"   | ""        | "Sabers"  | "sabersd@email.com"   | false
-	}
 }
