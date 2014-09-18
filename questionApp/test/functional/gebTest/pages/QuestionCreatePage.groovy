@@ -1,4 +1,4 @@
-package geb.pages
+package gebTest.pages
 
 class QuestionCreatePage extends geb.Page {
 	static url = "question/create"

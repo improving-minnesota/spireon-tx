@@ -1,11 +1,8 @@
-package geb
+package gebTest
 
 import geb.spock.GebReportingSpec
-
-import spock.lang.*
-
-import geb.pages.QuestionCreatePage
-import geb.pages.QuestionShowPage
+import gebTest.pages.QuestionCreatePage
+import gebTest.pages.QuestionShowPage
 
 class CreateQuestionFunctionalSpec extends GebReportingSpec {
 	def "should create questions"() {

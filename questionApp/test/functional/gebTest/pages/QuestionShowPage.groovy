@@ -1,4 +1,4 @@
-package geb.pages
+package gebTest.pages
 
 class QuestionShowPage extends geb.Page {
 	static at = { $("div#show-question").displayed }
